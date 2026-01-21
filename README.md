@@ -5,7 +5,8 @@ Le jeu se joue entièrement dans le terminal.
 
 Un mot secret est tiré aléatoirement parmi la liste des 8 059 mots de 5 lettres de la langue française. (liste située dans `words.json`).
 
-<img width="446" height="514" alt="image" src="https://github.com/user-attachments/assets/4cd9a8fe-a7ae-4eea-a186-b7a80de7ce2b" />
+<img width="430" height="376" alt="image" src="https://github.com/user-attachments/assets/474f32e3-a04a-4ce9-9b47-0b35149e7fad" />
+
 
 ## Installation et lancement
 
