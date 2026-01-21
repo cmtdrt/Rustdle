@@ -1,12 +1,16 @@
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::collections::HashMap;
+use std::env;
 use std::fs;
 use std::io::{self, Write};
 
-const MAX_TRIES: usize = 6; // Nombre d'essais maximum
+const DEFAULT_MAX_TRIES: usize = 6;
 
 fn main() {
+    // Nombre d'essais maximum
+    let max_tries = parse_max_tries().unwrap_or(DEFAULT_MAX_TRIES);
+
     // Chargement des mots depuis le fichier words.json
     let words = match load_words("words.json") {
         Ok(w) if !w.is_empty() => w,
@@ -28,14 +32,14 @@ fn main() {
 
         let word_set: std::collections::HashSet<&str> = words.iter().map(|s| s.as_str()).collect();
 
-        println!("Rustdle — devine le mot de 5 lettres ({} essais).", MAX_TRIES);
+        println!("Rustdle — devine le mot de 5 lettres ({} essais).", max_tries);
         println!("Indices: vert = bien placé, jaune = présent, gris = absent.\n");
 
         let mut history: Vec<String> = Vec::new();
         let mut tries = 0usize;
         let mut won = false;
 
-        while tries < MAX_TRIES {
+        while tries < max_tries {
             for line in &history {
                 println!("{line}");
             }
@@ -76,6 +80,16 @@ fn main() {
         }
 
         println!();
+    }
+}
+
+// Parser le nombre d'essais maximum
+fn parse_max_tries() -> Option<usize> {
+    let args: Vec<String> = env::args().collect();
+    if args.len() > 1 {
+        args[1].parse().ok()
+    } else {
+        None
     }
 }
 
