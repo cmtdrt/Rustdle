@@ -16,6 +16,13 @@ Clonez le dépôt, puis lancez le jeu depuis la racine du projet :
 cargo run
 ```
 
+Par défaut, le jeu permet 6 tentatives. Vous pouvez personnaliser ce nombre en passant un argument :
+
+```bash
+cargo run -- 10    # 10 tentatives
+cargo run -- 3     # 3 tentatives
+```
+
 # En jeu
 Quittez le jeu en appuyant sur `q` ou `ctrl+c`.
 A la fin d'une partie, vous pouvez relancer le jeu ou non en appuyant sur `o` ou `n`.
